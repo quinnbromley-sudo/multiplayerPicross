@@ -15,6 +15,20 @@ Maven is provided by the wrapper; you do not need to install it separately.
 
 ## Development (including Windows Git Bash)
 
+To open both servers in separate Windows Git Bash windows, run from the
+repository root:
+
+```bash
+bash start-dev.sh
+```
+
+The launcher installs frontend dependencies with `npm ci` if `node_modules/` is
+missing. It requires Git Bash, JDK 21 with `JAVA_HOME` set, and Node.js on `PATH`.
+Startup errors stay visible in the corresponding window. Stop each server with
+Ctrl+C. After dependency changes, run `npm ci` in `frontend/` again.
+
+To start the servers manually instead:
+
 Open two terminals in the repository root.
 
 **Terminal 1 — backend:**
