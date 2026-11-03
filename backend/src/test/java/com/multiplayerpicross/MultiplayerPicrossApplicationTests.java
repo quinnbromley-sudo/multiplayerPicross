@@ -6,9 +6,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -19,9 +18,9 @@ class MultiplayerPicrossApplicationTests {
     private MockMvc mvc;
 
     @Test
-    void servesHomepage() throws Exception {
-        mvc.perform(get("/index.html"))
+    void reportsBackendHealth() throws Exception {
+        mvc.perform(get("/api/health"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Multiplayer Picross")));
+                .andExpect(jsonPath("$.status").value("UP"));
     }
 }
